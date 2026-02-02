@@ -17,7 +17,6 @@ int main(int ac, char **av)
 		i = 42;
 	else
 		i = std::atoi(av[1]);
-	// std::cout << "plop" << std::endl;
 	std::vector<int> vec;
 	vec.push_back(42);
 	vec.push_back(12);
