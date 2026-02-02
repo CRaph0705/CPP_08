@@ -11,7 +11,9 @@ void easyfind(T &container, int i)
 		if (*it == i)
 		{
 			std::cout<< "Value " << i << " found." << std::endl;
+			return ;
 		}
 	}
 	std::cout<< "Value " << i << " not found." << std::endl;
+	return ;
 }
