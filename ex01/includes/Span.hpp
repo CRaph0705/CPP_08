@@ -11,7 +11,7 @@ class Span {
 		Span(unsigned int N);
 		Span(const Span &cpy);
 		~Span();
-		Span operator=(const Span &cpy);
+		Span &operator=(const Span &cpy);
 
 		void	addNumber(int num);
 

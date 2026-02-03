@@ -35,7 +35,7 @@ Span::~Span()
 	std::cout << "Span destructor function called" << std::endl;
 }
 
-Span Span::operator=(const Span &cpy)
+Span &Span::operator=(const Span &cpy)
 {
 	if (this == &cpy)
 		return (*this);
