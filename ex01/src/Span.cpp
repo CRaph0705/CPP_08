@@ -28,7 +28,7 @@ Span::Span(unsigned int N): _N(N)
 Span::Span(const Span &cpy): _N(cpy._N)
 {
 	std::cout << "Span copy constructor function called" << std::endl;
-	// cpy array
+	this->_array = cpy._array;
 }
 
 Span::~Span()
@@ -43,7 +43,10 @@ Span &Span::operator=(const Span &cpy)
 
 	std::cout << "Span overloaded operator= function called" << std::endl;
 	_N = cpy._N;
-	// + cpy array
+	for (unsigned int i = 0; i < cpy._N; i++)
+	{
+		this->_array.push_back(cpy._array[i]);
+	}
 	return (*this);
 }
 
@@ -53,9 +56,7 @@ void Span::addNumber(int num)
 	{
 		throw std::runtime_error("Span is full");
 	}
-	// std::cout << "Storage full, addNumber("<< num << ") aborted." << std::endl;
 	this->_array.push_back(num);
-	// std::cout << num << " has been added to storage." << std::endl;
 	return ;
 }
 
@@ -94,7 +95,6 @@ unsigned int Span::longestSpan() const
 		min_value = min(min_value, _array[i]);
 		max_value = max(max_value, _array[i]);
 	}
-	// std::cout << "min_value = " << min_value << ", max_value = " << max_value << std::endl;
 	return (max_value - min_value);
 }
 
