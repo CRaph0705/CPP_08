@@ -4,9 +4,9 @@
 class Span {
 	//
 	private:
-	public:
 		std::vector<int> _array;
 		unsigned int _N;
+	public:
 		Span();
 		Span(unsigned int N);
 		Span(const Span &cpy);
