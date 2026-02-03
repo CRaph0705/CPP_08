@@ -55,47 +55,31 @@ void Span::addNumber(int num)
 	}
 	// std::cout << "Storage full, addNumber("<< num << ") aborted." << std::endl;
 	this->_array.push_back(num);
-	std::cout << num << " has been added to storage." << std::endl;
+	// std::cout << num << " has been added to storage." << std::endl;
 	return ;
 }
 
-unsigned int Span::shortestSpan()
+unsigned int Span::shortestSpan() const
 {
-	unsigned int min_delta = abs(_array[1] - _array[0]);
-	unsigned int delta = abs(_array[1] - _array[0]);
-	// std::cout << std::endl;
-
 	if (_array.size() < 2)
 	{
 		throw std::runtime_error("Not enough elements");
 	}
 
+	std::vector<int> tmp = _array;
+	std::sort(tmp.begin(), tmp.end());
+	unsigned int min_delta = tmp[1] - tmp[0];
 
-	// template<class _IIter, class _Funct> _Funct std::for_each(_IIter, _IIter, _Funct)
-	// std::for_each()
-
-	// std::cout << "min_delta = " << min_delta << std::endl;
-	for (unsigned int i = 0; i < _array.size(); i++)
+	for (unsigned int i = 1; i < tmp.size() - 1; ++i)
 	{
-		// std::cout << "[i] = " << i << std::endl;
-		// std::cout << "_array[i] = " << _array[i] << std::endl;
-		for (unsigned int j = i + 1; j < _array.size(); j++)
-		{
-			// std::cout << "[j] = " << j << std::endl;
-			// std::cout << "_array[j] = " << _array[j] << std::endl;
-			delta = abs(_array[i] - _array[j]);
-			// std::cout << "delta (abs(array[i] - array[j])) = " << delta << std::endl;
-
-			min_delta = min(min_delta, delta);
-		}
-		// std::cout << "min_delta = " << min_delta << std::endl;
-		// std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
-		// std::cout << "_array[i] = " << _array[i] << ", _array[i + 1] = " << _array[i + 1] << std::endl;
+		unsigned int delta = tmp[i + 1] - tmp[i];
+		if (delta < min_delta)
+			min_delta = delta;
 	}
 	return (min_delta);
 }
 
-unsigned int Span::longestSpan()
+unsigned int Span::longestSpan() const
 {
 	int min_value = _array[0];
 	int max_value = _array[0];
