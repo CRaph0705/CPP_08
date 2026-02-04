@@ -2,7 +2,6 @@
 #include <iostream>
 #include <vector>
 class Span {
-	//
 	private:
 		std::vector<int> _array;
 		unsigned int _N;
@@ -18,7 +17,6 @@ class Span {
 		unsigned int shortestSpan() const;
 		unsigned int longestSpan() const;
 
-		//TODO : range of iterators to add multiple numbers to array
 		template <typename Iterator>
 		void addRange(Iterator start, Iterator end)
 		{
