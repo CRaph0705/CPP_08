@@ -10,7 +10,7 @@ int main(int ac, char **av)
 	int i;
 	if (ac > 2)
 	{
-		std::cout << "Please enter a value to search " << std::endl;
+		std::cout << "Only one value is required." << std::endl;
 		return (1);
 	}
 	if ( ac == 1)
@@ -26,7 +26,16 @@ int main(int ac, char **av)
 	vec.push_back(4242);
 	vec.push_back(22);
 
-	easyfind(vec, i);
+	try
+	{
+		std::cout << "looking for i = " << i << " in vector." << std::endl;
+		std::cout << *easyfind(vec, i) << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 
 	std::list<int> l;
 	l.push_back(42);
@@ -37,6 +46,15 @@ int main(int ac, char **av)
 	l.push_back(47);
 	l.push_back(48);
 
-	easyfind(l, i);
+	try
+	{
+		std::cout << "looking for i = " << i << " in list." << std::endl;
+		std::cout << *easyfind(l, i) << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
 	return (0);
 }
