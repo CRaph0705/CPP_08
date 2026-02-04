@@ -47,5 +47,36 @@ int	main( void )
 	{
 		std::cerr << e.what() << '\n';
 	}
+
+
+
+	Span big = Span(10000);
+
+	std::vector<int> vec;
+	for (int i = 0; i < 10000; i++)
+	{
+		vec.push_back(i);
+	}
+	big.addRange(vec.begin(), vec.end());
+
+
+	try
+	{
+		std::cout << "shortestSpan = " << big.shortestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	try
+	{
+		std::cout << "longestSpan = " << big.longestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
 	return (0);
 }
